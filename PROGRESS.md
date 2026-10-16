@@ -71,20 +71,15 @@ server renders facts from registry. Upstash Redis for cache + per IP limit + mon
 - 2026-10-16 Vercel project `regulars` (team anas02-projects, Hobby) linked + GitHub connected; env vars set for
   production and preview (QLOO_API_KEY, ANTHROPIC_API_KEY, CACHE_KEY_SECRET); live: https://regulars-zeta.vercel.app
 
+- 2026-10-16 Upstash: free plan = 1 DB, so the Townwatch store (upstash-kv-fuchsia-plank) is shared; connected to
+  `regulars` via API (KV_REST_API_* vars); all Regulars keys under `regulars:` (verified: 18 cached Qloo answers,
+  rate limit keys, budget counter in prod)
+- 2026-10-16 Production journeys pass (desktop + mobile, link worker, compare, check in, errors, privacy):
+  plan 18 to 23 s cold on Vercel
+- 2026-10-16 Uptime routine trig_01YBYs9d8ev1wLn8mGho3WeB (daily 06:00 UTC, read only, opens a GitHub issue
+  "Uptime check failing" on failure, stops reporting after 2026-11-16): https://claude.ai/code/routines/trig_01YBYs9d8ev1wLn8mGho3WeB
+- ALL 58 TASKS DONE
+
 ## Current step
-- Waiting for user: connect Upstash Redis (Vercel Marketplace) to project `regulars` (code reads UPSTASH_REDIS_REST_*
-  or KV_REST_API_*); then redeploy, run journeys against production, T058 uptime check until 2026-11-16
-- Needs from user later: Upstash Redis via Vercel Marketplace (works without it locally)
-
-## Next
-1. speckit-specify → speckit-clarify → speckit-plan → speckit-tasks → speckit-analyze
-2. Live Qloo probes in `scripts/` (3 cities x 3 profiles) before agent code
-3. speckit-implement, playwright-cli journeys, deploy-to-vercel
-
-## Mockup conflicts to fix (rules win)
-- Plan/Checkin/Compare/LinkWorker/PatientSheet show invented hours, events, walking times, prices
-  ("Tuesdays at 7 pm", "12 minutes on foot") → only show what Qloo returns
-- Tier names in mockup: Watch / Return / Join in; brief says Show up / Come back / Join in
-- Home stat uses Surgeon General 2023 advisory (sourced) instead of the three sources from the brief
-- Privacy page mockup mentions email, account, cookie sign in, Settings, retention placeholders → no accounts exist
-- Link worker "Step free entrance", "Daytime only", Spanish sheet: need Qloo data to back them
+- Remaining for the user: Devpost submission (DEVPOST.md ready), demo video if Devpost requires one,
+  disable the uptime routine after 2026-11-16 (routines cannot be deleted by the agent)

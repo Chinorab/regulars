@@ -132,9 +132,9 @@ playwright-cli journeys before each deploy.
 - [X] T053 playwright-cli journeys at 390x844 and 1440x900 per quickstart.md, screenshots in `tests/e2e/screens/`, compared with `design/`; record timings for the three samples (first step under 3 s, plan under 60 s) in `tests/e2e/timings.md`
 - [X] T054 Complete README (problem with sources, demo, why it only works with Qloo, Qloo calls table, API lessons, install, env vars, MCP config, license) in `README.md`
 - [X] T055 Write `DEVPOST.md` (Inspiration, What it does, How we built it, Qloo integration, Challenges, What's next)
-- [ ] T056 Create public GitHub repo `Chinorab/regulars` with MIT license and About description; push
-- [ ] T057 Deploy to Vercel with deploy-to-vercel skill (env vars, Upstash from Marketplace), rerun journeys on production URL
-- [ ] T058 Schedule a check that the demo stays online until 2026-11-16
+- [X] T056 Create public GitHub repo `Chinorab/regulars` with MIT license and About description; push
+- [X] T057 Deploy to Vercel with deploy-to-vercel skill (env vars, Upstash from Marketplace), rerun journeys on production URL
+- [X] T058 Schedule a check that the demo stays online until 2026-11-16
 
 ---
 
