@@ -1,0 +1,60 @@
+# Daily uptime check of the live demo until judging ends (2026-11-16).
+# Read only: pages, favicon and the MCP tool list. It never calls an endpoint that spends Qloo quota.
+# A failing run makes GitHub email the repository owner.
+name: Uptime
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BASE: https://regulars-zeta.vercel.app
+    steps:
+      - name: Stop after the judging window
+        id: window
+        run: |
+          if [ "$(date -u +%Y-%m-%d)" \> "2026-11-16" ]; then
+            echo "Monitoring window ended on 2026-11-16."
+            echo "active=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "active=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pages respond
+        if: steps.window.outputs.active == 'true'
+        run: |
+          check() {
+            for attempt in 1 2; do
+              code=$(curl -sL -m 30 -o body.html -w "%{http_code}" "$BASE$1" || echo 000)
+              if [ "$code" = "200" ] && grep -q "$2" body.html; then
+                echo "ok   $1 ($code)"; return 0
+              fi
+              echo "retry $1 ($code)"; sleep 30
+            done
+            echo "FAIL $1 ($code)"; head -c 300 body.html; return 1
+          }
+          check / "Become a regular somewhere"
+          check /privacy "Privacy"
+          check /plan "Regulars"
+          check /icon.svg "svg"
+
+      - name: MCP endpoint lists its tools
+        if: steps.window.outputs.active == 'true'
+        run: |
+          out=$(curl -s -m 30 -X POST "$BASE/api/mcp" \
+            -H "content-type: application/json" \
+            -H "accept: application/json, text/event-stream" \
+            -H "mcp-protocol-version: 2025-06-18" \
+            -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}')
+          for tool in find_regular_spots build_connection_plan explain_match; do
+            echo "$out" | grep -q "\"$tool\"" || { echo "FAIL missing tool $tool"; echo "$out" | head -c 300; exit 1; }
+          done
+          echo "ok   /api/mcp tools/list"

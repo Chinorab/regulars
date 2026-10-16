@@ -76,8 +76,9 @@ server renders facts from registry. Upstash Redis for cache + per IP limit + mon
   rate limit keys, budget counter in prod)
 - 2026-10-16 Production journeys pass (desktop + mobile, link worker, compare, check in, errors, privacy):
   plan 18 to 23 s cold on Vercel
-- 2026-10-16 Uptime routine trig_01YBYs9d8ev1wLn8mGho3WeB (daily 06:00 UTC, read only, opens a GitHub issue
-  "Uptime check failing" on failure, stops reporting after 2026-11-16): https://claude.ai/code/routines/trig_01YBYs9d8ev1wLn8mGho3WeB
+- 2026-10-16 Uptime: cloud routine trig_01YBYs9d8ev1wLn8mGho3WeB DISABLED (its sandbox egress blocks
+  vercel.app, every check failed); replaced by GitHub Actions `.github/workflows/uptime.yml` (daily 06:00 UTC,
+  read only, failing run = GitHub email to owner, inactive after 2026-11-16)
 - ALL 58 TASKS DONE
 
 ## Current step
