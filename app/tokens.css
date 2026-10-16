@@ -1,0 +1,98 @@
+/*
+  Regulars design tokens. Single source of truth, extracted from the Claude Design
+  mockups in design/*.dc.html (counts measured across all 15 boards):
+  ink #1B2420 (130 uses), clay #A8402A (101), muted #45504A (74), ground #EDEEE6 (32),
+  ink soft #2F3934 (31), lamp #F3D3A3 (29, door light in the mark), surface #F7F7F2 (28),
+  hairline #C2C6B8 (22), control border #9EA497 (19), card border #D0D4C6 (10).
+  Radii: 6px controls (47 uses), 14px panels (14), 10px cards (7), 4px small (10).
+  Components read these variables only. Light theme only: the product is paper first
+  (printed patient sheet, editorial pages), matching the mockups.
+*/
+:root {
+  color-scheme: light;
+
+  /* Color */
+  --ground: #edeee6;
+  --ground-sunk: #e2e5d8;
+  --ground-hover: #dde0d2;
+  --surface: #f7f7f2;
+  --surface-raised: #f4f5ee;
+  --paper: #ffffff;
+  --ink: #1b2420;
+  --ink-soft: #2f3934;
+  --ink-muted: #45504a;
+  --ink-faint: #5f6a63;
+  --hairline: #c2c6b8;
+  --line-card: #d0d4c6;
+  --line-control: #9ea497;
+  --clay: #a8402a;
+  --clay-hover: #8f3522;
+  --clay-deep: #7e2e1d;
+  --lamp: #f3d3a3;
+  --lamp-warm: #e9a86e;
+  --lamp-pale: #f6ddb3;
+  --night: #1f2a24;
+  --night-floor: #18211c;
+  --night-window: #2c3a32;
+  --on-dark-muted: #d6dbd2;
+  --placeholder-a: #d5d9c8;
+  --placeholder-b: #cacebc;
+  --map-ground: #daddcf;
+  --map-line: #f4f5ee;
+  --photo-a: #2a3630;
+  --photo-b: #26312b;
+  --photo-label: #c9cfc3;
+
+  /* Type */
+  --font-display: var(--font-bricolage), "Avenir Next", system-ui, sans-serif;
+  --font-body: var(--font-figtree), "Helvetica Neue", system-ui, sans-serif;
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-base: 15px;
+  --text-md: 16px;
+  --text-lg: 17px;
+  --text-xl: 18px;
+  --text-lead: clamp(18px, 1.5vw, 21px);
+  --text-h4: 22px;
+  --text-h3: clamp(24px, 2.2vw, 30px);
+  --text-h2: clamp(30px, 3.6vw, 44px);
+  --text-h1: clamp(42px, 5.8vw, 84px);
+  --text-hero: clamp(52px, 7.4vw, 108px);
+  --tracking-hero: -0.04em;
+  --tracking-h1: -0.035em;
+  --tracking-h2: -0.025em;
+  --tracking-h3: -0.02em;
+  --tracking-eyebrow: 0.12em;
+
+  /* Space and layout */
+  --gutter: clamp(16px, 5vw, 64px);
+  --page-max: 1240px;
+  --read-max: 820px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 120px;
+  --tap: 44px;
+  --control-h: 56px;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-panel: 14px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur: 200ms;
+  --dur-enter: 900ms;
+
+  /* Focus */
+  --focus-ring: 2px solid var(--clay);
+  --focus-offset: 3px;
+}

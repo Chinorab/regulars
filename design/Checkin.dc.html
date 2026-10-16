@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Regulars · Check in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Figtree:wght@400..700&amp;display=swap">
+<style>
+body{margin:0;background:#EDEEE6}
+a{color:#A8402A}a:hover{color:#7E2E1D}
+.btn{transition:background-color .2s ease,transform .2s ease}
+.btn:hover{background-color:#8F3522 !important;color:#FFFFFF !important}
+.btn:active,.ch:active{transform:translateY(1px) scale(.99)}
+.ch{transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;cursor:pointer}
+.ch:hover{border-color:#1B2420 !important}
+.nav a:hover{color:#A8402A !important}
+textarea::placeholder{color:#5F6A63}
+:focus-visible{outline:2px solid #A8402A;outline-offset:3px}
+@media (prefers-reduced-motion: no-preference){
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.in{animation:rise .8s cubic-bezier(.16,1,.3,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}
+.swap{animation:rise .6s cubic-bezier(.16,1,.3,1) both}
+}
+</style>
+</helmet>
+<div style="background: #EDEEE6; color: #1B2420; font-family: 'Figtree', 'Helvetica Neue', system-ui, sans-serif; min-height: 100vh">
+
+<header style="max-width: 1240px; margin: 0 auto; padding: 20px clamp(16px, 5vw, 64px); display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1B2420; min-height: 44px">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#A8402A"></rect><path d="M10 26V14.5a6 6 0 0 1 12 0V26z" fill="#F3D3A3"></path></svg>
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">Regulars</span>
+</a>
+<nav class="nav" aria-label="Main" style="display: flex; gap: 8px 28px; flex-wrap: wrap; font-size: 15px; font-weight: 500">
+<a href="Plan.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">My Plan</a>
+<a href="Checkin.dc.html" aria-current="page" style="color: #A8402A; text-decoration: none; padding: 12px 0">Check In</a>
+<a href="Privacy.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">Privacy</a>
+</nav>
+</header>
+
+<main id="main" style="max-width: 920px; margin: 0 auto; padding: 48px clamp(16px, 5vw, 64px) 120px; display: flex; flex-direction: column; gap: 48px">
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p class="in" style="margin: 0; font-size: 16px; color: #45504A">Tuesday night, your first visit</p>
+<h1 class="in d1" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: clamp(42px, 5.6vw, 76px); line-height: 0.98; letter-spacing: -0.04em; text-wrap: balance">How was The Lantern Room?</h1>
+</div>
+
+<fieldset class="in d2" style="border: 0; margin: 0; padding: 0">
+<legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">How did it go</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{ choices }}" as="c" hint-placeholder-count="3">
+<button type="button" class="ch" aria-pressed="{{ c.pressed }}" onClick="{{ c.pick }}" style="font: inherit; text-align: left; min-height: 148px; padding: 22px; border-radius: 14px; border: 1.5px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.fg }}; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<sc-if value="{{ c.isBack }}" hint-placeholder-val="{{ true }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 21V9a6 6 0 0 1 12 0v12"></path><path d="M3 21h18"></path><path d="M14.5 14h.01"></path></svg>
+</sc-if>
+<sc-if value="{{ c.isOkay }}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path></svg>
+</sc-if>
+<sc-if value="{{ c.isNot }}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h13l-3-3M20 17H7l3 3"></path></svg>
+</sc-if>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">{{ c.label }}</span>
+<span style="font-size: 15px; line-height: 1.4; color: {{ c.sub }}">{{ c.hint }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<section aria-live="polite" aria-labelledby="result" style="background: #F7F7F2; border: 1px solid #D0D4C6; border-radius: 14px; padding: clamp(24px, 3.5vw, 40px); display: flex; flex-direction: column; gap: 24px">
+<div class="swap" key="{{ choice }}" style="display: flex; flex-direction: column; gap: 10px">
+<h2 id="result" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: clamp(26px, 2.6vw, 34px); letter-spacing: -0.025em; line-height: 1.1">{{ title }}</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #2F3934; max-width: 56ch">{{ body }}</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+<li style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 4px 20px; align-items: baseline; padding: 16px 14px; margin: 0 -14px; border-top: 1px solid #D0D4C6; border-radius: 8px; background: {{ r.bg }}">
+<span style="font-size: 14px; font-weight: 600; color: #45504A">{{ r.weeks }}</span>
+<span style="font-size: 17px; font-weight: 600">{{ r.place }}</span>
+<span style="font-size: 15px; color: {{ r.noteColor }}; font-weight: {{ r.noteWeight }}">{{ r.note }}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="note" style="font-size: 16px; font-weight: 600">Anything we should know? <span style="font-weight: 400; color: #45504A">Optional</span></label>
+<textarea id="note" name="note" rows="3" autocomplete="off" placeholder="It was louder than I expected…" style="font: inherit; font-size: 17px; color: #1B2420; background: #F7F7F2; border: 1.5px solid #9EA497; border-radius: 6px; padding: 14px 16px; resize: vertical; box-sizing: border-box; width: 100%"></textarea>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center">
+<a class="btn" href="Plan.dc.html" style="display: inline-flex; align-items: center; gap: 12px; background: #A8402A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 17px 26px; border-radius: 6px; min-height: 44px">Save Check In</a>
+<p style="margin: 0; font-size: 15px; color: #45504A">Your answer only changes your plan. Nobody at the venue sees it.</p>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const choice = (this.state && this.state.choice) || 'back';
+    const opts = [
+      { id: 'back', label: 'I’d go back', hint: 'Felt right, or close to it' },
+      { id: 'okay', label: 'It was okay', hint: 'Not sure yet' },
+      { id: 'not', label: 'Not for me', hint: 'Wrong room, wrong crowd' }
+    ];
+    const choices = opts.map((o) => {
+      const on = o.id === choice;
+      return {
+        ...o, pressed: on ? 'true' : 'false',
+        bg: on ? '#1B2420' : '#F7F7F2', fg: on ? '#FFFFFF' : '#1B2420', border: on ? '#1B2420' : '#9EA497', sub: on ? '#D6DBD2' : '#45504A',
+        isBack: o.id === 'back', isOkay: o.id === 'okay', isNot: o.id === 'not',
+        pick: () => this.setState({ choice: o.id })
+      };
+    });
+    const hi = { bg: '#EDEEE6', noteColor: '#A8402A', noteWeight: '700' };
+    const lo = { bg: 'transparent', noteColor: '#45504A', noteWeight: '400' };
+    const outcomes = {
+      back: {
+        title: 'Good. Next Tuesday, same room.',
+        body: 'Going back is the whole point. You are settling in, so the reading circle starts a week earlier.',
+        rows: [
+          { weeks: 'Weeks 1 and 2', place: 'The Lantern Room', note: 'Second visit next Tuesday', ...lo },
+          { weeks: 'Weeks 3 and 4', place: 'Half Light Records', note: 'Unchanged', ...lo },
+          { weeks: 'Weeks 4 to 6', place: 'Common Pages', note: 'Now starts a week earlier', ...hi }
+        ]
+      },
+      okay: {
+        title: 'Fair enough. One more try.',
+        body: 'Second visits often feel easier than first ones. If it still feels flat, we swap it next week.',
+        rows: [
+          { weeks: 'Weeks 1 and 2', place: 'The Lantern Room', note: 'One more visit, then you decide', ...hi },
+          { weeks: 'Weeks 3 and 4', place: 'Half Light Records', note: 'Unchanged', ...lo },
+          { weeks: 'Weeks 5 and 6', place: 'Common Pages', note: 'Unchanged', ...lo }
+        ]
+      },
+      not: {
+        title: 'Thanks for trying it.',
+        body: 'That counts. We swapped it for a calmer room that fits the same taste, on the same night.',
+        rows: [
+          { weeks: 'Weeks 1 and 2', place: 'Kedzie Drawing Table', note: 'New: open drawing night, Tuesdays', ...hi },
+          { weeks: 'Weeks 3 and 4', place: 'Half Light Records', note: 'Unchanged', ...lo },
+          { weeks: 'Weeks 5 and 6', place: 'Common Pages', note: 'Unchanged', ...lo }
+        ]
+      }
+    };
+    const o = outcomes[choice];
+    return { choices, choice, title: o.title, body: o.body, rows: o.rows };
+  }
+}
+</script>
+</body>
+</html>

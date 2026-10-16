@@ -1,0 +1,298 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--clay);
+}
+
+a:hover {
+  color: var(--clay-deep);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a,
+button,
+select,
+label {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+  color: var(--paper);
+}
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .enter {
+    animation: rise var(--dur-enter) var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+  /* Scroll reveal moves content into place but never hides it, so text stays readable in
+     print, full page captures and anywhere scrolling does not happen. */
+  @keyframes settle {
+    from {
+      transform: translateY(24px);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+/* Patient sheet (design/PatientSheet.dc.html). Large print, letter size. */
+.print-sheet {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 17px;
+  line-height: 1.45;
+}
+.sheet-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sheet-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+}
+.sheet-meta,
+.sheet-small {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.sheet-title {
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.sheet-intro {
+  font-size: 17px;
+  color: var(--ink-soft);
+}
+.sheet-step {
+  border-top: 2px solid var(--ink);
+  padding-top: 14px;
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 18px;
+  break-inside: avoid;
+}
+.sheet-step-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sheet-weeks {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+.sheet-verb {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--clay);
+}
+.sheet-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sheet-place {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.1;
+}
+.sheet-visits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+}
+.sheet-visit {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  white-space: nowrap;
+}
+.sheet-box {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+}
+.sheet-foot {
+  border-top: 1px solid var(--hairline);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sheet-talk {
+  font-size: 19px;
+  font-weight: 600;
+}
+@media (max-width: 640px) {
+  .print-sheet {
+    padding: 24px 18px;
+  }
+  .sheet-step {
+    grid-template-columns: 1fr;
+  }
+  .sheet-visits {
+    flex-direction: row;
+    gap: 18px;
+  }
+}
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  body {
+    background: #fff;
+  }
+  body * {
+    visibility: hidden;
+    position: static !important;
+  }
+  .print-sheet,
+  .print-sheet * {
+    visibility: visible;
+  }
+  .print-sheet {
+    position: absolute !important;
+    inset: 0 auto auto 0;
+    width: 100%;
+    padding: 0;
+    font-size: 14pt;
+  }
+  .sheet-title {
+    font-size: 26pt;
+  }
+  .sheet-place {
+    font-size: 18pt;
+  }
+  .sheet-talk {
+    font-size: 15pt;
+  }
+  .skip-link {
+    display: none;
+  }
+}

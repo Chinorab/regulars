@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Regulars · Your Connection Plan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Figtree:wght@400..700&amp;display=swap">
+<style>
+body{margin:0;background:#EDEEE6}
+a{color:#A8402A}a:hover{color:#7E2E1D}
+.btn{transition:background-color .2s ease,transform .2s ease}
+.btn:hover{background-color:#8F3522 !important;color:#FFFFFF !important}
+.btn:active,.ghost:active{transform:translateY(1px)}
+.ghost{transition:background-color .2s ease,transform .2s ease}
+.ghost:hover{background-color:#E2E5D8 !important}
+.nav a:hover{color:#A8402A !important}
+:focus-visible{outline:2px solid #A8402A;outline-offset:3px}
+@media (prefers-reduced-motion: no-preference){
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes drop{0%{opacity:0;transform:translateY(-14px)}70%{opacity:1;transform:translateY(2px)}100%{transform:none}}
+.in{animation:rise .9s cubic-bezier(.16,1,.3,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}
+.pin{animation:drop .7s cubic-bezier(.16,1,.3,1) .5s both}
+@supports (animation-timeline: view()){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+}
+}
+</style>
+</helmet>
+<div style="background: #EDEEE6; color: #1B2420; font-family: 'Figtree', 'Helvetica Neue', system-ui, sans-serif; min-height: 100vh">
+
+<header style="max-width: 1240px; margin: 0 auto; padding: 20px clamp(16px, 5vw, 64px); display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1B2420; min-height: 44px">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#A8402A"></rect><path d="M10 26V14.5a6 6 0 0 1 12 0V26z" fill="#F3D3A3"></path></svg>
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">Regulars</span>
+</a>
+<nav class="nav" aria-label="Main" style="display: flex; gap: 8px 28px; flex-wrap: wrap; font-size: 15px; font-weight: 500">
+<a href="Plan.dc.html" aria-current="page" style="color: #A8402A; text-decoration: none; padding: 12px 0">My Plan</a>
+<a href="Checkin.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">Check In</a>
+<a href="Taste.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">My Taste</a>
+<a href="Privacy.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">Privacy</a>
+</nav>
+</header>
+
+<main id="main" style="max-width: 1240px; margin: 0 auto; padding: 40px clamp(16px, 5vw, 64px) 120px">
+
+<section style="display: flex; flex-direction: column; gap: 22px; padding-bottom: 56px">
+<h1 class="in" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: clamp(44px, 6.2vw, 92px); line-height: 0.96; letter-spacing: -0.04em; max-width: 13ch; text-wrap: balance">Your six weeks in Logan Square.</h1>
+<p class="in d1" style="margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: #2F3934">Tuesday and Thursday evenings. Under $15 a visit. No drinking needed. <a href="Intake.dc.html" style="color: #1B2420; font-weight: 600">Change</a></p>
+</section>
+
+<nav class="in d2" aria-label="Plan timeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px; margin-bottom: 24px">
+<sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+<a href="{{ t.anchor }}" style="text-decoration: none; color: #1B2420; border-top: 3px solid {{ t.bar }}; padding: 14px 0 6px; display: flex; flex-direction: column; gap: 4px; min-height: 44px">
+<span style="font-size: 14px; font-weight: 600; color: #45504A">{{ t.weeks }}</span>
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em">{{ t.verb }}</span>
+<span style="font-size: 14px; font-weight: 600; color: #A8402A">{{ t.now }}</span>
+</a>
+</sc-for>
+</nav>
+
+<sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+<section id="{{ t.id }}" class="rv" aria-labelledby="{{ t.hid }}" style="border-top: 1px solid #C2C6B8; padding: 56px 0 64px; display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-start; scroll-margin-top: 24px">
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: #45504A">{{ t.weeks }}</p>
+<h2 id="{{ t.hid }}" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: clamp(44px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.04em; color: {{ t.verbColor }}">{{ t.verb }}</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #2F3934; max-width: 30ch">{{ t.goal }}</p>
+</div>
+
+<article aria-label="{{ t.place }}" style="flex: 999 1 640px; min-width: 0; background: #F7F7F2; border: 1px solid #D0D4C6; border-radius: 14px; overflow: hidden">
+<div role="img" aria-label="{{ t.photoLabel }}" style="height: clamp(200px, 22vw, 300px); background: repeating-linear-gradient(135deg, #2A3630 0 12px, #26312B 12px 24px); display: flex; align-items: flex-end; padding: 18px; box-sizing: border-box">
+<span style="font-size: 13px; font-weight: 600; color: #C9CFC3">Venue photo</span>
+</div>
+<div style="padding: clamp(20px, 3vw, 32px); display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: clamp(28px, 2.6vw, 38px); letter-spacing: -0.025em; line-height: 1.05">{{ t.place }}</h3>
+<p style="margin: 0; font-size: 16px; color: #45504A">{{ t.kind }}</p>
+</div>
+<button type="button" class="ghost" style="font: inherit; font-size: 15px; font-weight: 600; color: #1B2420; background: transparent; border: 1.5px solid #9EA497; border-radius: 6px; min-height: 44px; padding: 0 16px; display: flex; align-items: center; gap: 8px; cursor: pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h13l-3-3M20 17H7l3 3"></path></svg>
+Swap Place</button>
+</div>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px 24px; font-size: 16px; line-height: 1.4">
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8402A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg><span>{{ t.when }}</span></li>
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8402A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><rect x="3.5" y="6.5" width="17" height="11" rx="2"></rect><circle cx="12" cy="12" r="2.2"></circle></svg><span>{{ t.cost }}</span></li>
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8402A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg><span>{{ t.where }}</span></li>
+</ul>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div role="img" aria-label="{{ t.mapLabel }}" style="position: relative; height: 240px; border-radius: 10px; overflow: hidden; background-color: #DADDCF; background-image: linear-gradient(118deg, transparent 47%, #F4F5EE 47%, #F4F5EE 50.5%, transparent 50.5%), repeating-linear-gradient(0deg, transparent 0 44px, #F4F5EE 44px 50px), repeating-linear-gradient(90deg, transparent 0 66px, #F4F5EE 66px 73px)">
+<div style="position: absolute; left: 8%; top: 12%; width: 22%; height: 18%; border-radius: 6px; background: #C9D1B7"></div>
+<div class="pin" style="position: absolute; left: {{ t.pinX }}; top: {{ t.pinY }}; display: flex; flex-direction: column; align-items: center">
+<svg width="34" height="42" viewBox="0 0 34 42" aria-hidden="true"><path d="M17 41S3 27.5 3 16a14 14 0 0 1 28 0c0 11.5-14 25-14 25z" fill="#A8402A"></path><circle cx="17" cy="16" r="5.5" fill="#F3D3A3"></circle></svg>
+</div>
+</div>
+<a href="#" style="font-size: 15px; font-weight: 600; color: #1B2420; display: inline-flex; align-items: center; gap: 6px; min-height: 44px">Open in Maps
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+</div>
+
+<section aria-label="Why you" style="background: #EDEEE6; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 16px">
+<h4 style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.015em">Why you</h4>
+<sc-for list="{{ t.why }}" as="w" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; color: #A8402A">{{ w.who }}</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.45; color: #1B2420">{{ w.text }}</p>
+</div>
+</sc-for>
+<p style="margin: 0; padding-top: 12px; border-top: 1px solid #C2C6B8; font-size: 13px; color: #45504A">Signals from the <a href="https://www.qloo.com" style="color: #45504A">Qloo</a> taste graph</p>
+</section>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h4 style="margin: 0; font-size: 16px; font-weight: 600">Your move</h4>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ t.moves }}" as="m" hint-placeholder-count="3">
+<li>
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 16px; line-height: 1.4; color: #1B2420; text-align: left; width: 100%; background: transparent; border: 0; padding: 10px 0; min-height: 44px; display: flex; gap: 14px; align-items: flex-start; cursor: pointer">
+<span aria-hidden="true" style="width: 20px; height: 20px; border: 1.5px solid #1B2420; border-radius: 4px; flex: none; margin-top: 1px"></span>
+{{ m }}</button>
+</li>
+</sc-for>
+</ul>
+</div>
+</div>
+</article>
+</section>
+</sc-for>
+
+<section class="rv" style="border-top: 1px solid #C2C6B8; padding-top: 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<p style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 500; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.15; letter-spacing: -0.02em; max-width: 24ch">After each visit, tell us how it went. The plan follows you.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center">
+<a class="btn" href="Checkin.dc.html" style="display: inline-flex; align-items: center; gap: 12px; background: #A8402A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 17px 26px; border-radius: 6px; min-height: 44px">Check In
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="Compare.dc.html" style="color: #1B2420; font-weight: 500; font-size: 16px; padding: 12px 0">How this plan was made</a>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const tiers = [
+      {
+        id: 'watch', weeks: 'Weeks 1 and 2', verb: 'Watch.', now: 'You are here',
+        goal: 'Go alone, twice. Sit near the back. Nobody expects anything from you.',
+        place: 'The Lantern Room', kind: 'Listening room and café',
+        when: 'Tuesdays at 7 pm, songwriter night', cost: 'Free, tips welcome', where: 'Milwaukee Avenue, 12 minutes on foot',
+        pinX: '58%', pinY: '34%',
+        why: [
+          { who: 'Big Thief', text: 'Fans of the band in Chicago go here more than to most rooms in the city.' },
+          { who: 'Past Lives', text: 'People who loved the film save this place often.' },
+          { who: 'Quiet rooms over loud ones', text: 'Visitors describe it as a room where people actually listen.' }
+        ],
+        moves: ['Arrive at 6:50 and take a seat near the back.', 'Stay for two sets. Leave whenever you want.', 'Come back next Tuesday. Same seat if you can.']
+      },
+      {
+        id: 'return', weeks: 'Weeks 3 and 4', verb: 'Return.', now: '',
+        goal: 'Same places, same nights. Let a few faces become familiar.',
+        place: 'Half Light Records', kind: 'Record shop with a weekly listening night',
+        when: 'Thursdays at 7:30 pm, new record night', cost: 'Free', where: 'Kedzie Boulevard, 8 minutes on foot',
+        pinX: '30%', pinY: '52%',
+        why: [
+          { who: 'Big Thief', text: 'Indie and folk listeners nearby keep coming back here.' },
+          { who: 'The Bear', text: 'Popular with people who like small places run by their owners.' }
+        ],
+        moves: ['Look through one crate. No need to buy.', 'Ask the person at the counter what is playing.', 'Go back the next Thursday and say hi to them.']
+      },
+      {
+        id: 'join', weeks: 'Weeks 5 and 6', verb: 'Join in.', now: '',
+        goal: 'Take one small part. A question, a seat at the table, a name.',
+        place: 'Common Pages', kind: 'Neighborhood bookshop with a reading circle',
+        when: 'Thursdays at 6:30 pm, every other week', cost: 'Free, bring the book', where: 'Fullerton Avenue, 15 minutes on foot',
+        pinX: '70%', pinY: '58%',
+        why: [
+          { who: 'Tomorrow, and Tomorrow, and Tomorrow', text: 'Readers of this novel nearby pick this circle over others.' },
+          { who: 'Friendship over many years', text: 'This season the circle reads novels about long friendships.' }
+        ],
+        moves: ['Pick up this month’s book and read the first chapters.', 'Say one thing you noticed, even a small one.', 'Learn one name. Use it next time.']
+      }
+    ].map((t, i) => ({
+      ...t,
+      anchor: '#' + t.id, hid: 'h-' + t.id,
+      bar: i === 0 ? '#A8402A' : '#C2C6B8',
+      verbColor: i === 2 ? '#A8402A' : '#1B2420',
+      photoLabel: 'Photo of ' + t.place,
+      mapLabel: 'Map showing ' + t.place + ' in Logan Square'
+    }));
+    return { tiers };
+  }
+}
+</script>
+</body>
+</html>

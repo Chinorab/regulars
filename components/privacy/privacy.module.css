@@ -1,0 +1,155 @@
+.main {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 40px var(--gutter) var(--space-9);
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: clamp(52px, 7vw, 104px);
+  line-height: 0.94;
+  letter-spacing: var(--tracking-hero);
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-h3);
+}
+
+.date {
+  font-size: var(--text-base);
+  color: var(--ink-muted);
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px 80px;
+  align-items: flex-start;
+}
+
+.toc {
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-md);
+}
+
+@media (min-width: 900px) {
+  .toc {
+    position: sticky;
+    top: var(--space-5);
+  }
+}
+
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 0;
+  border-top: 1px solid var(--hairline);
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+}
+
+.toc a:hover {
+  color: var(--clay);
+}
+
+.body {
+  flex: 999 1 560px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 720px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  scroll-margin-top: var(--space-5);
+}
+
+.h2 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  letter-spacing: var(--tracking-h3);
+  line-height: 1.1;
+}
+
+.p {
+  font-size: var(--text-xl);
+  line-height: 1.65;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: var(--text-xl);
+  line-height: 1.55;
+}
+
+.list li > svg {
+  flex: none;
+  margin-top: 5px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-md);
+  line-height: 1.5;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 12px 12px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.table th {
+  font-weight: 600;
+  width: 32%;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.box {
+  background: var(--ground-sunk);
+  border-radius: var(--radius-panel);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}

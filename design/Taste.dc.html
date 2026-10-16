@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Regulars · Your taste</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Figtree:wght@400..700&amp;display=swap">
+<style>
+body{margin:0;background:#EDEEE6}
+a{color:#A8402A}a:hover{color:#7E2E1D}
+.btn{transition:background-color .2s ease,transform .2s ease}
+.btn:hover{background-color:#8F3522 !important;color:#FFFFFF !important}
+.btn:active{transform:translateY(1px)}
+.x{transition:background-color .18s ease}
+.x:hover{background-color:#DDE0D2 !important}
+:focus-visible{outline:2px solid #A8402A;outline-offset:3px}
+@media (prefers-reduced-motion: no-preference){
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.in{animation:rise .9s cubic-bezier(.16,1,.3,1) both}
+.d1{animation-delay:.12s}.d2{animation-delay:.24s}
+.tag{animation:rise .8s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(.3s + var(--i) * 70ms)}
+@supports (animation-timeline: view()){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+}
+}
+</style>
+</helmet>
+<div style="background: #EDEEE6; color: #1B2420; font-family: 'Figtree', 'Helvetica Neue', system-ui, sans-serif; min-height: 100vh">
+
+<header style="max-width: 1240px; margin: 0 auto; padding: 20px clamp(16px, 5vw, 64px); display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1B2420; min-height: 44px">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#A8402A"></rect><path d="M10 26V14.5a6 6 0 0 1 12 0V26z" fill="#F3D3A3"></path></svg>
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">Regulars</span>
+</a>
+<a href="Intake.dc.html" style="color: #45504A; font-size: 15px; padding: 12px 0">Edit what I love</a>
+</header>
+
+<main id="main" style="max-width: 1240px; margin: 0 auto; padding: 40px clamp(16px, 5vw, 64px) 120px; display: flex; flex-direction: column; gap: 80px">
+
+<section style="display: flex; flex-direction: column; gap: 28px; max-width: 980px">
+<p class="in" style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #45504A">Your taste, as we read it</p>
+<h1 class="in d1" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: clamp(42px, 5.8vw, 84px); line-height: 1; letter-spacing: -0.035em; text-wrap: balance">You like small rooms where someone is telling the truth.</h1>
+<p class="in d2" style="margin: 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.55; color: #2F3934; max-width: 46ch; text-wrap: pretty">Songs that sound recorded in one take. Films where two people almost say it. Stories set in kitchens and workshops, about people who keep showing up.</p>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start">
+<section aria-labelledby="tags" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<h2 id="tags" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.015em">What we will look for</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 0 32px">
+<sc-for list="{{ tags }}" as="t" hint-placeholder-count="8">
+<div class="tag" style="--i: {{ $index }}; border-top: 1px solid #C2C6B8; padding: 18px 0 22px; display: flex; gap: 12px; align-items: flex-start; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<p style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: {{ t.size }}; line-height: 1.05; letter-spacing: -0.02em; color: {{ t.color }}">{{ t.label }}</p>
+<p style="margin: 0; font-size: 14px; color: #45504A">{{ t.from }}</p>
+</div>
+<button type="button" class="x" aria-label="{{ t.remove }}" style="flex: none; width: 44px; height: 44px; border: 0; border-radius: 6px; background: transparent; color: #45504A; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 15px; color: #45504A">Remove anything that is not you. The plan updates.</p>
+</section>
+
+<aside class="rv" aria-labelledby="from" style="flex: 1 1 300px; min-width: 0; background: #E2E5D8; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<h2 id="from" style="margin: 0; font-size: 16px; font-weight: 600">Built from</h2>
+<sc-for list="{{ sources }}" as="s" hint-placeholder-count="4">
+<div style="display: flex; gap: 14px; align-items: center">
+<div role="img" aria-label="{{ s.img }}" style="width: 52px; height: 52px; border-radius: 6px; flex: none; background: repeating-linear-gradient(135deg, #CDD1BF 0 7px, #C3C8B4 7px 14px)"></div>
+<div style="min-width: 0">
+<p style="margin: 0; font-weight: 600; font-size: 16px; line-height: 1.3">{{ s.name }}</p>
+<p style="margin: 2px 0 0; font-size: 14px; color: #45504A">{{ s.kind }}</p>
+</div>
+</div>
+</sc-for>
+<div style="border-top: 1px solid #C2C6B8; padding-top: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.5; color: #2F3934">
+<p style="margin: 0">Logan Square, Chicago</p>
+<p style="margin: 0">Tuesday and Thursday evenings</p>
+<p style="margin: 0">Under $15, no drinking needed</p>
+</div>
+</aside>
+</div>
+
+<div class="rv" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
+<a class="btn" href="Plan.dc.html" style="display: inline-flex; align-items: center; gap: 12px; background: #A8402A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 17px 26px; border-radius: 6px; min-height: 44px">Build My Plan
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="Intake.dc.html" style="color: #1B2420; font-size: 16px; font-weight: 500; padding: 12px 0">Edit what I love</a>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const sizes = { l: 'clamp(28px, 2.6vw, 36px)', m: 'clamp(24px, 2.1vw, 29px)', s: '22px' };
+    const tags = [
+      { label: 'Songwriters who tell the truth', from: 'From Big Thief', w: 'l', c: '#A8402A' },
+      { label: 'Quiet rooms over loud ones', from: 'From Big Thief and Past Lives', w: 'l', c: '#1B2420' },
+      { label: 'Slow, patient films', from: 'From Past Lives', w: 'm', c: '#1B2420' },
+      { label: 'Food made with care', from: 'From The Bear', w: 'm', c: '#1B2420' },
+      { label: 'Friendship over many years', from: 'From Tomorrow, and Tomorrow, and Tomorrow', w: 'm', c: '#1B2420' },
+      { label: 'Made by hand', from: 'From The Bear and Big Thief', w: 's', c: '#1B2420' },
+      { label: 'Places with a regular crowd', from: 'From The Bear', w: 's', c: '#1B2420' },
+      { label: 'Games and the people who play them', from: 'From Tomorrow, and Tomorrow, and Tomorrow', w: 's', c: '#1B2420' }
+    ].map((t) => ({ ...t, size: sizes[t.w], color: t.c, remove: 'Remove ' + t.label }));
+    const sources = [
+      { name: 'Big Thief', kind: 'Band' },
+      { name: 'Past Lives', kind: 'Film, 2023' },
+      { name: 'The Bear', kind: 'TV series' },
+      { name: 'Tomorrow, and Tomorrow, and Tomorrow', kind: 'Novel by Gabrielle Zevin' }
+    ].map((s) => ({ ...s, img: 'Image of ' + s.name }));
+    return { tags, sources };
+  }
+}
+</script>
+</body>
+</html>

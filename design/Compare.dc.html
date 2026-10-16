@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Regulars · Without Qloo, with Qloo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Figtree:wght@400..700&amp;display=swap">
+<style>
+body{margin:0;background:#EDEEE6}
+a{color:#A8402A}a:hover{color:#7E2E1D}
+.btn{transition:background-color .2s ease,transform .2s ease}
+.btn:hover{background-color:#8F3522 !important;color:#FFFFFF !important}
+.btn:active{transform:translateY(1px)}
+.nav a:hover{color:#A8402A !important}
+:focus-visible{outline:2px solid #A8402A;outline-offset:3px}
+@media (prefers-reduced-motion: no-preference){
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes left{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes right{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.in{animation:rise .9s cubic-bezier(.16,1,.3,1) both}
+.d1{animation-delay:.1s}
+.l{animation:left .9s cubic-bezier(.16,1,.3,1) .25s both}
+.r{animation:right .9s cubic-bezier(.16,1,.3,1) .4s both}
+@supports (animation-timeline: view()){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+}
+}
+</style>
+</helmet>
+<div style="background: #EDEEE6; color: #1B2420; font-family: 'Figtree', 'Helvetica Neue', system-ui, sans-serif; min-height: 100vh">
+
+<header style="max-width: 1240px; margin: 0 auto; padding: 20px clamp(16px, 5vw, 64px); display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1B2420; min-height: 44px">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#A8402A"></rect><path d="M10 26V14.5a6 6 0 0 1 12 0V26z" fill="#F3D3A3"></path></svg>
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">Regulars</span>
+</a>
+<nav class="nav" aria-label="Main" style="display: flex; gap: 8px 28px; flex-wrap: wrap; font-size: 15px; font-weight: 500">
+<a href="Plan.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">My Plan</a>
+<a href="Checkin.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">Check In</a>
+<a href="Privacy.dc.html" style="color: #1B2420; text-decoration: none; padding: 12px 0">Privacy</a>
+</nav>
+</header>
+
+<main id="main" style="max-width: 1240px; margin: 0 auto; padding: 40px clamp(16px, 5vw, 64px) 120px; display: flex; flex-direction: column; gap: 48px">
+
+<h1 class="in" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 700; font-size: clamp(44px, 6vw, 88px); line-height: 0.96; letter-spacing: -0.04em; text-wrap: balance">Same question. Two answers.</h1>
+
+<figure class="in d1" style="margin: 0; display: flex; gap: 16px; align-items: flex-start; max-width: 860px">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45504A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 4px"><path d="M4 5.5h16v10H9l-5 4z"></path></svg>
+<blockquote style="margin: 0; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.5; color: #1B2420">“I just moved to Logan Square and I don’t know anyone. I love Big Thief, Past Lives, The Bear and Tomorrow, and Tomorrow, and Tomorrow. I don’t drink. Where should I go?”</blockquote>
+</figure>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px; align-items: stretch">
+
+<section class="l" aria-labelledby="without" style="background: #E2E5D8; border-radius: 14px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="without" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: clamp(28px, 2.6vw, 36px); letter-spacing: -0.025em; color: #2F3934">Without Qloo</h2>
+<p style="margin: 0; font-size: 15px; color: #45504A">A typical general answer</p>
+</div>
+<div style="font-size: 17px; line-height: 1.6; color: #2F3934; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0">Here are some ways to meet people in a new city:</p>
+<ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px">
+<li>Join a group on a meetup site that matches your hobbies.</li>
+<li>Volunteer for a local cause you care about.</li>
+<li>Take a class, like cooking or pottery.</li>
+<li>Check out local bars and coffee shops.</li>
+<li>Be patient. Friendships take time.</li>
+</ol>
+</div>
+<div style="margin-top: auto; border-top: 1px solid #B9BEAF; padding-top: 20px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ missing }}" as="m" hint-placeholder-count="3">
+<p style="margin: 0; display: flex; gap: 10px; align-items: flex-start; font-size: 16px; color: #2F3934">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F3934" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 6l12 12M18 6L6 18"></path></svg>{{ m }}</p>
+</sc-for>
+</div>
+</section>
+
+<section class="r" aria-labelledby="with" style="background: #F7F7F2; border: 1.5px solid #A8402A; border-radius: 14px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="with" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: clamp(28px, 2.6vw, 36px); letter-spacing: -0.025em; color: #A8402A">With Qloo</h2>
+<p style="margin: 0; font-size: 15px; color: #45504A">Your plan, grounded in the Qloo taste graph</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px">
+<sc-for list="{{ plan }}" as="p" hint-placeholder-count="3">
+<li style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 18px; border-bottom: 1px solid #D0D4C6">
+<span style="font-size: 14px; font-weight: 600; color: #45504A">{{ p.weeks }}</span>
+<span style="font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-size: 23px; font-weight: 600; letter-spacing: -0.015em">{{ p.place }}</span>
+<span style="font-size: 16px; color: #2F3934">{{ p.what }}</span>
+<span style="font-size: 15px; line-height: 1.45; color: #1B2420"><strong style="color: #A8402A">Why you:</strong> {{ p.why }}</span>
+</li>
+</sc-for>
+</ol>
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ gains }}" as="g" hint-placeholder-count="4">
+<p style="margin: 0; display: flex; gap: 10px; align-items: flex-start; font-size: 16px; color: #1B2420">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8402A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{ g }}</p>
+</sc-for>
+</div>
+</section>
+</div>
+
+<section class="rv" aria-labelledby="how" style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; justify-content: space-between; border-top: 1px solid #C2C6B8; padding-top: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 640px">
+<h2 id="how" style="margin: 0; font-family: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif; font-weight: 600; font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.02em">What makes the difference</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2F3934">Qloo connects what people love to the places they actually go. We send it the things you named and your neighborhood. It returns places where people with taste like yours already gather. Nothing else about you leaves Regulars.</p>
+</div>
+<a class="btn" href="Plan.dc.html" style="display: inline-flex; align-items: center; gap: 12px; background: #A8402A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 17px 26px; border-radius: 6px; min-height: 44px">Back to My Plan</a>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      missing: ['No real places to walk into', 'Nothing tied to what you love', 'Suggests bars, though you don’t drink'],
+      plan: [
+        { weeks: 'Weeks 1 and 2, watch', place: 'The Lantern Room', what: 'Songwriter night, Tuesdays at 7 pm', why: 'Big Thief fans in Chicago go here more than to most rooms.' },
+        { weeks: 'Weeks 3 and 4, return', place: 'Half Light Records', what: 'New record night, Thursdays at 7:30 pm', why: 'Indie and folk listeners nearby keep coming back.' },
+        { weeks: 'Weeks 5 and 6, join in', place: 'Common Pages', what: 'Reading circle, every other Thursday', why: 'Readers of Tomorrow, and Tomorrow, and Tomorrow pick this circle.' }
+      ],
+      gains: ['Real places within 15 minutes on foot', 'Each one traced to something you love', 'Paced from watching to joining in', 'No drinking needed anywhere']
+    };
+  }
+}
+</script>
+</body>
+</html>
