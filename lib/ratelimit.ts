@@ -35,7 +35,7 @@ export async function limit(req: Request, bucket: Bucket): Promise<LimitResult> 
       l = new Ratelimit({
         redis,
         limiter: Ratelimit.slidingWindow(cfg.tokens, `${cfg.windowSec} s`),
-        prefix: `rl:${bucket}`,
+        prefix: `regulars:rl:${bucket}`,
       });
       limiters.set(bucket, l);
     }

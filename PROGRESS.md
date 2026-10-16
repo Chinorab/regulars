@@ -66,10 +66,14 @@ server renders facts from registry. Upstash Redis for cache + per IP limit + mon
   (sticky ancestor); locality shows "Name, City"; rate limit plan bucket 12/h (env RATE_LIMIT_PLAN_PER_HOUR)
 - README/DEVPOST still contain placeholders [DEMO_URL] and [DEMO_DOMAIN] until deploy
 
+- 2026-10-16 T056 DONE: public repo https://github.com/Chinorab/regulars (MIT detected, topics, homepage set);
+  git identity is repo local (Anas <atikniouine93@gmail.com>)
+- 2026-10-16 Vercel project `regulars` (team anas02-projects, Hobby) linked + GitHub connected; env vars set for
+  production and preview (QLOO_API_KEY, ANTHROPIC_API_KEY, CACHE_KEY_SECRET); live: https://regulars-zeta.vercel.app
+
 ## Current step
-- Waiting for user go-ahead: T056 public repo Chinorab/regulars (git init done, nothing committed yet),
-  T057 Vercel deploy (needs Upstash Redis from Vercel Marketplace: user must connect it), T058 uptime check
-- Prod env vars to set on Vercel: QLOO_API_KEY, ANTHROPIC_API_KEY, CACHE_KEY_SECRET (new random), Upstash vars
+- Waiting for user: connect Upstash Redis (Vercel Marketplace) to project `regulars` (code reads UPSTASH_REDIS_REST_*
+  or KV_REST_API_*); then redeploy, run journeys against production, T058 uptime check until 2026-11-16
 - Needs from user later: Upstash Redis via Vercel Marketplace (works without it locally)
 
 ## Next

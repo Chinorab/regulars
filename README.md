@@ -204,7 +204,7 @@ example `playwright-cli run-code --filename=tests/e2e/journey-plan.js`. Results:
 | `QLOO_API_KEY` | yes | Qloo hackathon key, server only |
 | `ANTHROPIC_API_KEY` | yes | Claude API key, server only |
 | `CACHE_KEY_SECRET` | yes | Random secret used to hash cache keys and visitor IPs (`openssl rand -hex 32`) |
-| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | in production | Shared cache, rate limits and monthly Qloo budget. Without them an in process fallback is used |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` (or the `KV_REST_API_URL`, `KV_REST_API_TOKEN` names the Vercel Upstash integration sets) | in production | Shared cache, rate limits and monthly Qloo budget, all keys under `regulars:`. Without them an in process fallback is used |
 | `QLOO_MONTHLY_LIMIT` | no | Stop uncached Qloo calls after this many per month (default 9000) |
 | `RATE_LIMIT_PLAN_PER_HOUR` | no | Plan builds per visitor per hour (default 12) |
 

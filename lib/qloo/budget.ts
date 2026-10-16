@@ -27,7 +27,7 @@ export async function reserveCall(): Promise<void> {
   const r = getRedis();
   if (r) {
     try {
-      const key = `budget:qloo:${month}`;
+      const key = `regulars:budget:qloo:${month}`;
       const n = await r.incr(key);
       if (n === 1) await r.expire(key, 60 * 60 * 24 * 35);
       if (n > MONTHLY_LIMIT) throw new QuotaError("Monthly Qloo budget reached");

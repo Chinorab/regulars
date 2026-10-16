@@ -2,6 +2,7 @@ import "server-only";
 import { createHmac } from "node:crypto";
 import { Redis } from "@upstash/redis";
 
+// All keys live under "regulars:" because the Upstash database is shared with another project.
 // 24 h cache of Qloo answers (clarification 2026-10-16). Keys are HMACs so the store
 // never sees what a person typed (constitution III, FR-028).
 
@@ -29,7 +30,7 @@ export function getRedis(): Redis | null {
 const memory = new Map<string, { value: string; expires: number }>();
 
 export async function cacheGet<T>(key: string): Promise<Cached<T> | null> {
-  const k = `qloo:${hmac(key)}`;
+  const k = `regulars:qloo:${hmac(key)}`;
   const r = getRedis();
   if (r) {
     try {
@@ -45,7 +46,7 @@ export async function cacheGet<T>(key: string): Promise<Cached<T> | null> {
 }
 
 export async function cacheSet<T>(key: string, value: Cached<T>): Promise<void> {
-  const k = `qloo:${hmac(key)}`;
+  const k = `regulars:qloo:${hmac(key)}`;
   const r = getRedis();
   if (r) {
     try {
