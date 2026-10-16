@@ -12,3 +12,6 @@ next-env.d.ts
 coverage/
 tests/e2e/screens/
 .playwright-cli/
+
+.vercel
+.env*

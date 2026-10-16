@@ -4,7 +4,7 @@ Become a regular somewhere. Regulars takes a few things you love and your neighb
 places where people with similar taste already go, and turns them into a six week Connection Plan:
 **Show up**, **Come back**, **Join in**.
 
-Built for the Qloo Agentic Hackathon. Live demo: **[DEMO_URL]** (no account, three one click
+Built for the Qloo Agentic Hackathon. Live demo: **https://regulars-zeta.vercel.app** (no account, three one click
 examples). License: [MIT](LICENSE).
 
 ## The problem
@@ -210,7 +210,7 @@ example `playwright-cli run-code --filename=tests/e2e/journey-plan.js`. Results:
 
 ## Use it from Claude Desktop (MCP)
 
-The endpoint is `https://[DEMO_DOMAIN]/api/mcp` (Streamable HTTP). In Claude Desktop, add it as a
+The endpoint is `https://regulars-zeta.vercel.app/api/mcp` (Streamable HTTP). In Claude Desktop, add it as a
 custom connector with that URL, or use `mcp-remote` in `claude_desktop_config.json`:
 
 ```json
@@ -218,7 +218,7 @@ custom connector with that URL, or use `mcp-remote` in `claude_desktop_config.js
   "mcpServers": {
     "regulars": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://[DEMO_DOMAIN]/api/mcp"]
+      "args": ["-y", "mcp-remote", "https://regulars-zeta.vercel.app/api/mcp"]
     }
   }
 }

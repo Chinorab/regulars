@@ -3,7 +3,7 @@
 **Become a regular somewhere.** Name what you love. Regulars finds the places your people already
 go, then plans six weeks of showing up.
 
-Live demo: [DEMO_URL] · Code: https://github.com/Chinorab/regulars · License: MIT
+Live demo: https://regulars-zeta.vercel.app · Code: https://github.com/Chinorab/regulars · License: MIT
 
 ## Inspiration
 
